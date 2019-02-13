@@ -5,7 +5,9 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "reselect": "^3.0.1",
+    "re-reselect": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
@@ -59,5 +61,5 @@
     "watch": "nodemon --watch src --exec \"npm run compile\"",
     "test:unit": "yarn jest --env=jsdom ./src"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
