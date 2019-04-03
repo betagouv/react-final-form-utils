@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Running Tests
           command: |
-            yarn test:unit
+            yarn test
 
 workflows:
   version: 2
