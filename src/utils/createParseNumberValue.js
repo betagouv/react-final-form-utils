@@ -10,3 +10,5 @@ export const createParseNumberValue = type => value => {
   }
   return value
 }
+
+export default createParseNumberValue

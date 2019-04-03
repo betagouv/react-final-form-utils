@@ -2,6 +2,10 @@
   "dependencies": {
     "classnames": "2.2.5",
     "eslint": "^5.8.0",
+    "final-form-calculate": "^1.2.1",
+    "moment": "^2.18.1",
+    "moment-locale-fr": "^1.0.0",
+    "moment-timezone": "^0.5.21",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -34,6 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.1.0",
+    "final-form": "^4.9.1",
     "jest": "^23.4.2",
     "nodemon": "^1.11.0",
     "prettier": "1.12.1",
@@ -41,13 +46,14 @@
     "prettier-stylelint": "^0.4.2",
     "pretty-quick": "^1.6.0",
     "react-addons-test-utils": "^15.6.2",
+    "react-final-form": "^4.1.0",
     "react-test-renderer": "^16.5.1"
   },
   "keywords": [
     "react",
     "react-router",
-    "hoc",
-    "query"
+    "react-final-form",
+    "final-form-calculate"
   ],
   "main": "lib/index.js",
   "name": "react-final-form-utils",
@@ -58,8 +64,8 @@
     "precommit": "./precommit.sh",
     "prettier": "$(yarn bin)/prettier --write 'src/**/*.js'",
     "prepublish": "npm run compile",
-    "watch": "nodemon --watch src --exec \"npm run compile\"",
-    "test:unit": "yarn jest --env=jsdom ./src"
+    "test": "yarn jest --env=jsdom ./src",
+    "watch": "nodemon --watch src --exec \"npm run compile\""
   },
   "version": "0.0.4"
 }
