@@ -1,9 +1,10 @@
 import createDecorator from 'final-form-calculate'
 import moment from 'moment'
+import 'moment-timezone'
 import createCachedSelector from 're-reselect'
 
-function mapArgsToCacheKey(triggerDateName, targetDateName, tz) {
-  return `${triggerDateName || ''}${targetDateName || ''}${tz || ''}`
+function mapArgsToCacheKey(triggerDateName, targetDateName, timezone) {
+  return `${triggerDateName || ''}${targetDateName || ''}${timezone || ''}`
 }
 
 export const selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator = createCachedSelector(
@@ -20,23 +21,20 @@ export const selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDeco
           return {}
         }
 
-        let targetDateHoutMinutes = moment(targetDate).utc()
-
+        let targetMoment = moment(targetDate).utc()
         if (timezone) {
-          targetDateHoutMinutes = targetDateHoutMinutes.tz(timezone)
+          targetMoment = targetMoment.tz(timezone)
         }
 
-        targetDateHoutMinutes = targetDateHoutMinutes.format('HH:mm')
-
+        const targetDateHoutMinutes = targetMoment.format('HH:mm')
         const [hour, minutes] = targetDateHoutMinutes.split(':')
 
-        let updatedTargetDate = moment(triggerDate).utc()
-
+        let triggerMoment = moment(triggerDate).utc()
         if (timezone) {
-          updatedTargetDate = updatedTargetDate.tz(timezone)
+          triggerMoment = triggerMoment.tz(timezone)
         }
 
-        updatedTargetDate = updatedTargetDate
+        const updatedTargetDate = triggerMoment
           .hours(hour)
           .minutes(minutes)
           .toISOString()

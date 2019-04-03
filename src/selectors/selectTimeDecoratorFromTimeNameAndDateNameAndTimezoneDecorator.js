@@ -1,9 +1,10 @@
 import moment from 'moment'
+import 'moment-timezone'
 import createDecorator from 'final-form-calculate'
 import createCachedSelector from 're-reselect'
 
-function mapArgsToCacheKey(timeName, dateName, tz) {
-  return `${timeName || ''}${dateName || ''}${tz || ''}`
+function mapArgsToCacheKey(timeName, dateName, timezone) {
+  return `${timeName || ''}${dateName || ''}${timezone || ''}`
 }
 
 export const selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator = createCachedSelector(
@@ -15,34 +16,33 @@ export const selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator = cr
       {
         field: timeName,
         updates: (time, doublonTimeName, allValues) => {
-          if (!time) {
-            return {}
-          }
 
-          const [hour, minutes] = time.split(':')
           const date = allValues[dateName]
-
           if (!date) {
             return {}
           }
 
-          const previousDate = moment(date).utc()
-          let updatedDate = previousDate
-
+          let previousDateMoment = moment(date).utc()
           if (timezone) {
-            updatedDate = updatedDate.tz(timezone)
+            previousDateMoment = previousDateMoment.tz(timezone)
           }
 
-          const previousTime = updatedDate.format("HH:mm")
-
-          updatedDate = updatedDate
-            .hours(hour)
-            .minutes(minutes)
-            .toISOString()
+          const previousTime = previousDateMoment.format("HH:mm")
+          if (!time) {
+            return {
+              [timeName]: previousTime
+            }
+          }
 
           if (previousTime === time) {
             return {}
           }
+
+          const [hour, minutes] = time.split(':')
+          const updatedDate = previousDateMoment
+            .hours(hour)
+            .minutes(minutes)
+            .toISOString()
 
           return {
             [dateName]: updatedDate,
@@ -53,20 +53,22 @@ export const selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator = cr
         field: dateName,
         updates: (date, doublonDateName, allValues) => {
 
-          let momentDate = moment(date).utc()
+          let dateMoment = moment(date).utc()
           if (timezone) {
-            momentDate = momentDate.tz(timezone)
+            dateMoment = dateMoment.tz(timezone)
           }
 
-          const updatedTime = momentDate.format('HH:mm')
+          const updatedTime = dateMoment.format('HH:mm')
 
           const time = allValues[timeName]
           if (time) {
+
             if (updatedTime === time) {
               return {}
             }
+
             const [hour, minutes] = time.split(':')
-            const updatedDate = momentDate
+            const updatedDate = dateMoment
               .hours(hour)
               .minutes(minutes)
               .toISOString()
