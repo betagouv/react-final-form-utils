@@ -1,5 +1,11 @@
 # react-final-form-utils
 
+Decorators, validators and string helpers for classic email, password, loading fields in a react final form
+
+[![CircleCI](https://circleci.com/gh/betagouv/react-final-form-utils/tree/master.svg?style=svg)](https://circleci.com/gh/betagouv/react-final-form-utils/tree/master)
+[![npm version](https://img.shields.io/npm/v/react-final-form-utils.svg?style=flat-square)](https://npmjs.org/package/react-final-form-utils)
+
+
 ## Basic Usage
 
 For a typical TextField input:
