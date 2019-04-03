@@ -1,4 +1,5 @@
 export * from './composeValidators'
 export * from './config'
 export * from './createParseNumberValue'
+export * from './getCanSubmit'
 export * from './parseSubmitErrors'
