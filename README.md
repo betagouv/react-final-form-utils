@@ -1,11 +1,5 @@
 # react-final-form-utils
 
-
-** EN CONSTRUCTION **
-Ce code est du code externalisé du https://github.com/betagouv/pass-culture-shared qui concentre un nombre d'utilités React Redux
-utilisé par les applications front du pass culture.
-Tant que les tests fonctionnels ne sont pas écrits, cette lib ne peut être considérée en production.
-
 ## Basic Usage
 
 For a typical TextField input:
