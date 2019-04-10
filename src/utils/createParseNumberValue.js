@@ -2,13 +2,27 @@ export const createParseNumberValue = type => value => {
   if (typeof value === 'undefined') {
     return null
   }
-  if (type === "number") {
-    if (value.includes('.')) {
-      return parseFloat(value)
-    }
-    return parseInt(value, 10)
+
+  let stringifiedNumberValue = value
+  if (typeof stringifiedNumberValue !== 'string') {
+    stringifiedNumberValue = String(value)
   }
-  return value
+
+  if (stringifiedNumberValue === "") {
+    return ""
+  }
+
+  if (type === "number") {
+    let number
+    if (stringifiedNumberValue.includes('.')) {
+      number = parseFloat(stringifiedNumberValue)
+    } else {
+      number = parseInt(stringifiedNumberValue, 10)
+    }
+    return number
+  }
+
+  return stringifiedNumberValue
 }
 
 export default createParseNumberValue

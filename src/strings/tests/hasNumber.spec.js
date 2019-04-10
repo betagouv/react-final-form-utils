@@ -1,7 +1,7 @@
 /* eslint no-console: 0, max-nested-callbacks: 0 */
-import { hasNumber } from './hasNumber'
+import { hasNumber } from '../hasNumber'
 
-describe('src | utils | strings | hasNumber', () => {
+describe('src | strings | hasNumber', () => {
   it('return false', () => {
     const expected = false
     let value = ''

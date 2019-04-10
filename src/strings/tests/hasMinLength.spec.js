@@ -1,7 +1,7 @@
 /* eslint no-console: 0, max-nested-callbacks: 0 */
-import { hasMinLength } from './hasMinLength'
+import { hasMinLength } from '../hasMinLength'
 
-describe('src | utils | strings | hasMinLength', () => {
+describe('src | strings | hasMinLength', () => {
   it('return false', () => {
     const expected = false
     let value = false
