@@ -3,7 +3,7 @@ import 'moment-timezone'
 import createDecorator from 'final-form-calculate'
 import createCachedSelector from 're-reselect'
 
-function mapArgsToCacheKey(timeName, dateName, timezone) {
+function mapArgsToCacheKey({ timeName, dateName, timezone }) {
   return `${timeName || ''}${dateName || ''}${timezone || ''}`
 }
 

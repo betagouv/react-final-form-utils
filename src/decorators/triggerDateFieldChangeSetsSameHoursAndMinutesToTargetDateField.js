@@ -3,11 +3,11 @@ import moment from 'moment'
 import 'moment-timezone'
 import createCachedSelector from 're-reselect'
 
-function mapArgsToCacheKey(triggerDateName, targetDateName, timezone) {
+function mapArgsToCacheKey({ triggerDateName, targetDateName, timezone }) {
   return `${triggerDateName || ''}${targetDateName || ''}${timezone || ''}`
 }
 
-export const triggerDateChangeSetsSameHoursAndMinutesToTargetDate = createCachedSelector(
+export const triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField = createCachedSelector(
   ({ triggerDateName }) => triggerDateName,
   ({ targetDateName }) => targetDateName,
   ({ timezone }) => timezone,
@@ -46,4 +46,4 @@ export const triggerDateChangeSetsSameHoursAndMinutesToTargetDate = createCached
     })
 )(mapArgsToCacheKey)
 
-export default triggerDateChangeSetsSameHoursAndMinutesToTargetDate
+export default triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField
