@@ -60,7 +60,7 @@ describe('src | selectors | bindTimeFieldWithDateField', () => {
   })
 
 
-  it.only('should clamp the time of the date to the defined time', done => {
+  it('should clamp the time of the date to the defined time', done => {
     // given
     const initialValues = {
       dateTime: "2019-04-27T19:00:00Z"
