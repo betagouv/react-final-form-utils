@@ -7,10 +7,10 @@ function mapArgsToCacheKey(triggerDateName, targetDateName, timezone) {
   return `${triggerDateName || ''}${targetDateName || ''}${timezone || ''}`
 }
 
-export const selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator = createCachedSelector(
-  triggerDateName => triggerDateName,
-  (triggerDateName, targetDateName) => targetDateName,
-  (triggerDateName, targetDateName, timezone) => timezone,
+export const triggerDateChangeSetsSameHoursAndMinutesToTargetDate = createCachedSelector(
+  ({ triggerDateName }) => triggerDateName,
+  ({ targetDateName }) => targetDateName,
+  ({ timezone }) => timezone,
   (triggerDateName, targetDateName, timezone) =>
     createDecorator({
       field: triggerDateName,
@@ -46,4 +46,4 @@ export const selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDeco
     })
 )(mapArgsToCacheKey)
 
-export default selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator
+export default triggerDateChangeSetsSameHoursAndMinutesToTargetDate

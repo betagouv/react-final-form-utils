@@ -7,10 +7,10 @@ function mapArgsToCacheKey(timeName, dateName, timezone) {
   return `${timeName || ''}${dateName || ''}${timezone || ''}`
 }
 
-export const selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator = createCachedSelector(
-  timeName => timeName,
-  (timeName, dateName) => dateName,
-  (timeName, dateName, timezone) => timezone,
+export const bindTimeFieldWithDateField = createCachedSelector(
+  ({ timeName }) => timeName,
+  ({ dateName }) => dateName,
+  ({ timezone }) => timezone,
   (timeName, dateName, timezone) =>
     createDecorator(
       {
@@ -86,4 +86,4 @@ export const selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator = cr
     )
 )(mapArgsToCacheKey)
 
-export default selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator
+export default bindTimeFieldWithDateField
