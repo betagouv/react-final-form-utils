@@ -4,9 +4,9 @@ import 'moment-timezone'
 import React from 'react'
 import { Field, Form } from 'react-final-form'
 
-import { selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator } from '../selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator'
+import { triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField } from '../triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField'
 
-describe('src | selectors | selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator', () => {
+describe('src | selectors | triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField', () => {
   it('should update the target date to the trigger one with keeping hours and minute of previous target date, when both dates are already initialized', done => {
     // given
     const initialValues = {
@@ -16,10 +16,10 @@ describe('src | selectors | selectBoundDatesFromTriggerDateNameAndTargetDateName
     const wrapper = mount(
       <Form
         decorators={[
-          selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator(
-            'beginningDateTime',
-            'endDateTime',
-          )
+          triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField({
+            targetDateName: 'endDateTime',
+            triggerDateName: 'beginningDateTime'
+          })
         ]}
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -69,11 +69,11 @@ describe('src | selectors | selectBoundDatesFromTriggerDateNameAndTargetDateName
     const wrapper = mount(
       <Form
         decorators={[
-          selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator(
-            'beginningDateTime',
-            'endDateTime',
-            'America/Cayenne'
-          )
+          triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField({
+            targetDateName: 'endDateTime',
+            timezone: 'America/Cayenne',
+            triggerDateName: 'beginningDateTime',
+          })
         ]}
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -122,10 +122,10 @@ describe('src | selectors | selectBoundDatesFromTriggerDateNameAndTargetDateName
     const wrapper = mount(
       <Form
         decorators={[
-          selectBoundDatesFromTriggerDateNameAndTargetDateNameAndTimezoneDecorator(
-            'beginningDateTime',
-            'endDateTime',
-          )
+          triggerDateFieldChangeSetsSameHoursAndMinutesToTargetDateField({
+            targetDateName: 'endDateTime',
+            triggerDateName: 'beginningDateTime',
+          })
         ]}
         initialValues={initialValues}
         onSubmit={onSubmit}

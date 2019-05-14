@@ -28,6 +28,7 @@ export const bindTimeFieldWithDateField = createCachedSelector(
           }
 
           const previousTime = previousDateMoment.format("HH:mm")
+
           if (!time) {
             return {
               [timeName]: previousTime

@@ -4,9 +4,9 @@ import 'moment-timezone'
 import React from 'react'
 import { Field, Form } from 'react-final-form'
 
-import { selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator } from '../selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator'
+import { bindTimeFieldWithDateField } from '../bindTimeFieldWithDateField'
 
-describe('src | selectors | selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator', () => {
+describe('src | selectors | bindTimeFieldWithDateField', () => {
   it('should update the date when time is updated', done => {
     // given
     const initialValues = {
@@ -15,10 +15,10 @@ describe('src | selectors | selectTimeDecoratorFromTimeNameAndDateNameAndTimezon
     const wrapper = mount(
       <Form
         decorators={[
-          selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator(
-            'time',
-            'dateTime',
-          )
+          bindTimeFieldWithDateField({
+            dateName: 'dateTime',
+            timeName: 'time',
+          })
         ]}
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -68,10 +68,10 @@ describe('src | selectors | selectTimeDecoratorFromTimeNameAndDateNameAndTimezon
     const wrapper = mount(
       <Form
         decorators={[
-          selectTimeDecoratorFromTimeNameAndDateNameAndTimezoneDecorator(
-            'time',
-            'dateTime',
-          )
+          bindTimeFieldWithDateField({
+            dateName: 'dateTime',
+            timeName: 'time',
+          })
         ]}
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -98,7 +98,6 @@ describe('src | selectors | selectTimeDecoratorFromTimeNameAndDateNameAndTimezon
     )
 
     // when
-    console.log('AVANT')
     wrapper.find(Field)
            .find({ name: "dateTime" })
            .find("input")
