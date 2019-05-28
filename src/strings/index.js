@@ -1,4 +1,3 @@
-// https://github.com/airbnb/javascript#modules
 export * from './capitalize'
 export * from './hasLowercase'
 export * from './hasMinLength'
@@ -7,4 +6,5 @@ export * from './hasUppercase'
 export * from './isEmpty'
 export * from './isString'
 export * from './isPassword'
+export * from './pluralize'
 export * from './removeWhitespaces'
