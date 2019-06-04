@@ -58,4 +58,15 @@ describe('src | strings | createParseNumberValue', () => {
     // then
     expect(number).toEqual(null)
   })
+
+  it('should return a parsed number when number contains a comma', () => {
+    // given
+    const numberAsString = '11,1'
+
+    // when
+    const result = createParseNumberValue('number')(numberAsString)
+
+    // then
+    expect(result).toEqual(11.1)
+  })
 })
